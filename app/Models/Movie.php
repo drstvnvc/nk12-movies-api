@@ -16,4 +16,8 @@ class Movie extends Model
     'release_date',
     'genre',
   ];
+
+  public static function search($title="") {
+    return self::where("title", "LIKE", "%$title%");
+  }
 }
