@@ -30,7 +30,6 @@ class UpdateMovieRequest extends FormRequest
       'duration' => 'sometimes|integer|min:0',
       'release_date' => 'sometimes|date',
       'genre' => 'sometimes|string|in:' . implode(',', $this->genres),
-
     ];
   }
 }

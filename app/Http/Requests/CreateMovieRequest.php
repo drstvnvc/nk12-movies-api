@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\UniqueWithReleaseDate;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CreateMovieRequest extends FormRequest
@@ -25,7 +26,7 @@ class CreateMovieRequest extends FormRequest
   public function rules()
   {
     return [
-      'title' => 'required|string',
+      'title' => ['required','string', new UniqueWithReleaseDate($this->release_date)],
       'director' => 'required|string',
       'imageUrl' => 'required|url',
       'duration' => 'required|integer|min:0',
